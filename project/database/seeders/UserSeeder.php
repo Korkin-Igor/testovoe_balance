@@ -14,15 +14,11 @@ class UserSeeder extends Seeder
     {
         User::create([
             'name' => 'test1',
-            'phone' => '89999999999',
-            'password' => bcrypt('password'),
             'balance' => 10000,
         ]);
 
         User::create([
             'name' => 'test2',
-            'phone' => '89876543210',
-            'password' => bcrypt('password'),
             'balance' => 15000,
         ]);
     }
