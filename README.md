@@ -8,6 +8,7 @@ cp project/.env.example project/.env # создаем .env в папке project
 cp project/.env deploy/.env # создаем .env в папке deploy (не забудьте заполнить)
 cd deploy
 docker compose up -d --build # собираем проект
+docker compose exec app composer install # устанавливаем composer
 docker compose exec app php artisan key:generate # генерируем ключ для приложения
 docker compose exec app php artisan migrate --seed # заполняем БД тестовыми данными
 ```
