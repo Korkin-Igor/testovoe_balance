@@ -14,16 +14,16 @@ class PaymentController extends Controller
 {
     public function deposit(StoreDepositRequest $request): JsonResponse
     {
-        return response()->json(StoreDepositAction::execute($request));
+        return StoreDepositAction::execute($request);
     }
 
     public function withdraw(StoreWithdrawRequest $request): JsonResponse
     {
-        return response()->json(StoreWithdrawAction::execute($request));
+        return StoreWithdrawAction::execute($request);
     }
 
     public function transfer(StoreTransferRequest $request): JsonResponse
     {
-        return response()->json(StoreTransferAction::execute($request));
+        return StoreTransferAction::execute($request);
     }
 }
