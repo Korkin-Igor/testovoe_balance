@@ -6,7 +6,7 @@ git clone https://github.com/Korkin-Igor/testovoe_balance.git # установк
 cd testovoe_balance
 cp project/.env.example project/.env # создаем .env (не забудьте заполнить)
 cd deploy
-ln -s project/.env .env # оставляем ссылку в deploy на .env
+ln -s ../project/.env .env # оставляем ссылку в deploy на .env
 docker compose up -d --build # собираем проект
 docker compose exec app php artisan key:generate # генерируем ключ для приложения
 docker compose exec app php artisan migrate --seed # заполняем БД тестовыми данными
