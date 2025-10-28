@@ -12,6 +12,7 @@ class Payment extends Model
         'to_user_id',
         'amount',
         'comment',
+        'status'
     ];
 
     public $timestamps = false;

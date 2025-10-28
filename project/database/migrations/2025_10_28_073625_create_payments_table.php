@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('to_user_id')->constrained('users');
             $table->decimal('amount', 12, 2)->default(0);
             $table->string('comment')->nullable();
+            $table->enum('status', ['deposit', 'withdraw', 'transfer_in', 'transfer_out']);
         });
     }
 
