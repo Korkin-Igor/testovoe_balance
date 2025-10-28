@@ -16,11 +16,7 @@ services:
     image: postgres:16
     container_name: db
     env_file:
-      - ../project/.env
-    environment:
-      - POSTGRES_DB=${DB_DATABASE}
-      - POSTGRES_USER=${DB_USERNAME}
-      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - ../deploy/.env
     restart: unless-stopped
     ports:
       - "5433:5432"
