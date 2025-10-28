@@ -11,3 +11,7 @@ Route::post('/transfer', [PaymentController::class, 'transfer']);
 Route::get('/balance/{user}', [UserController::class, 'getBalance'])
     ->where('user', '[0-9]+');
 
+// test
+Route::get('/users', function () {
+    return App\Models\User::all();
+});
