@@ -19,7 +19,7 @@ RUN apk add --no-cache \
 
 RUN docker-php-ext-install pdo_pgsql
 
-WORKDIR /var/www/html
+WORKDIR /var/www/
 
 COPY --from=build /app/vendor ./vendor
 
