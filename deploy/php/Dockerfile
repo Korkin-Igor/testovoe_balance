@@ -17,14 +17,11 @@ RUN apk add --no-cache \
     git \
     curl
 
-RUN docker-php-ext-install pdo_pgsql && \
-    docker-php-ext-enable pdo_pgsql
+RUN docker-php-ext-install pdo_pgsql
 
 WORKDIR /var/www/html
 
 COPY --from=build /app/vendor ./vendor
-
-COPY project/. .
 
 RUN chmod -R 775 storage bootstrap/cache vendor && \
     chown -R www-data:www-data storage bootstrap/cache vendor
