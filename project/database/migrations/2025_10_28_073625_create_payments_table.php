@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('from_user_id')->constrained('users');
-            $table->foreignId('to_user_id')->constrained('users');
+            $table->foreignId('user_id')->nullable()->constrained('users');
             $table->decimal('amount', 12, 2)->default(0);
             $table->string('comment')->nullable();
             $table->enum('status', ['deposit', 'withdraw', 'transfer_in', 'transfer_out']);
