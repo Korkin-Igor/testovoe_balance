@@ -8,8 +8,6 @@ RUN composer install --no-progress --no-suggest --no-scripts
 
 RUN composer dump-autoload --no-scripts
 
-RUN ls -la /app/vendor
-
 # php
 FROM php:8.2-fpm-alpine
 
