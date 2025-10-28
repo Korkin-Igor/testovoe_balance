@@ -10,21 +10,20 @@ use Illuminate\Support\Facades\DB;
 
 class StoreDepositAction
 {
-
     public static function execute(StoreDepositRequest $request): JsonResponse
     {
         $data = $request->validated();
 
-        $user = User::where('id', $data['user_id'])->first();
-
-        if (!$user->exists()) {
+        // Проверяем существование пользователя
+        $user = User::find($data['user_id']);
+        if (!$user) {
             return response()->json([
                 'message' => 'Пользователь не найден.',
             ], 404);
         }
 
         try {
-            DB::transaction(function ($data, $user) {
+            DB::transaction(function () use ($data, $user) {
                 Payment::create([
                     'user_id' => $user->id,
                     'amount' => $data['amount'],
@@ -45,5 +44,4 @@ class StoreDepositAction
             ], 500);
         }
     }
-
 }

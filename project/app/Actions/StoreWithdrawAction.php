@@ -30,7 +30,7 @@ class StoreWithdrawAction
         }
 
         try {
-            DB::transaction(function ($data, $user) {
+            DB::transaction(function () use ($data, $user) {
                 Payment::create([
                     'user_id' => $user->id,
                     'amount' => $data['amount'],

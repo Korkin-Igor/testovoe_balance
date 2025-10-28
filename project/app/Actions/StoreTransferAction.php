@@ -37,7 +37,7 @@ class StoreTransferAction
         }
 
         try {
-            DB::transaction(function ($data, $fromUser, $toUser) {
+            DB::transaction(function () use ($data, $fromUser, $toUser) {
                 Payment::create([
                     'user_id' => $fromUser->id,
                     'amount' => $data['amount'],
