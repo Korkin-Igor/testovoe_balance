@@ -23,6 +23,12 @@ class StoreWithdrawAction
             ], 404);
         }
 
+        if ($user->balance < $data['amount']) {
+            return response()->json([
+                'message' => 'Недостаточно средств.'
+            ], 409);
+        }
+
         try {
             DB::transaction(function ($data, $user) {
                 Payment::create([
