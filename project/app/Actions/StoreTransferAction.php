@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Action;
+namespace App\Actions;
 
 use App\Http\Requests\StoreTransferRequest;
 use App\Models\Payment;
