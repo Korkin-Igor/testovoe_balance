@@ -16,14 +16,4 @@ class Payment extends Model
     ];
 
     public $timestamps = false;
-
-    public function from_user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'from_user_id');
-    }
-
-    public function to_user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'to_user_id');
-    }
 }

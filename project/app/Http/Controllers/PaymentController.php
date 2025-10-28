@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Action\Payment\StoreDepositAction;
-use App\Action\Payment\StoreTransferAction;
-use App\Action\Payment\StoreWithdrawAction;
+use App\Action\StoreDepositAction;
+use App\Action\StoreTransferAction;
+use App\Action\StoreWithdrawAction;
 use App\Http\Requests\StoreDepositRequest;
 use App\Http\Requests\StoreTransferRequest;
 use App\Http\Requests\StoreWithdrawRequest;

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Action\Payment;
+namespace App\Action;
 
-use App\Http\Requests\StoreWithdrawRequest;
+use App\Http\Requests\StoreDepositRequest;
 use App\Models\Payment;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\DB;
 
-class StoreWithdrawAction
+class StoreDepositAction
 {
 
-    public static function execute(StoreWithdrawRequest $request): JsonResponse
+    public static function execute(StoreDepositRequest $request): JsonResponse
     {
         $data = $request->validated();
 
@@ -29,14 +29,14 @@ class StoreWithdrawAction
                     'user_id' => $user->id,
                     'amount' => $data['amount'],
                     'comment' => $data['comment'] ?? null,
-                    'status' => 'withdraw',
+                    'status' => 'deposit',
                 ]);
 
-                $user->decrement('balance', $data['amount']);
+                $user->increment('balance', $data['amount']);
             });
 
             return response()->json([
-                'message' => 'Средства успешно списаны.'
+                'message' => 'Средства успешно начислены пользователю.'
             ]);
 
         } catch (\Exception $e) {

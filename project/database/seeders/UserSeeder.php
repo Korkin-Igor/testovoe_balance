@@ -13,12 +13,10 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'name' => 'test1',
             'balance' => 10000,
         ]);
 
         User::create([
-            'name' => 'test2',
             'balance' => 15000,
         ]);
     }
