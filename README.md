@@ -3,6 +3,7 @@
 ## Инструкция для запуска
 ```bash
 git clone https://github.com/Korkin-Igor/testovoe_balance.git # установка проекта
+cd testovoe_balance
 cp project/.env.example project/.env # создаем .env (не забудьте заполнить)
 ln -s project/.env deploy/.env # оставляем ссылку в deploy на .env
 cd deploy
