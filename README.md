@@ -4,7 +4,8 @@
 ```bash
 git clone https://github.com/Korkin-Igor/testovoe_balance.git # установка проекта
 cd testovoe_balance
-cp project/.env.example project/.env # создаем .env (не забудьте заполнить)
+cp project/.env.example project/.env # создаем .env в папке project (не забудьте заполнить)
+cp project/.env deploy/.env # создаем .env в папке deploy (не забудьте заполнить)
 cd deploy
 ln -s ../project/.env .env # оставляем ссылку в deploy на .env
 docker compose up -d --build # собираем проект
