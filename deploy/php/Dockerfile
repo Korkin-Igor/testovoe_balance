@@ -1,29 +1,26 @@
-# зависимости
-FROM composer:latest AS build
-WORKDIR /app
-
-COPY project/composer.json project/composer.lock ./
-
-RUN composer install --no-progress --no-suggest --no-scripts
-
-RUN composer dump-autoload --no-scripts
-
-# php
 FROM php:8.2-fpm-alpine
 
+# Системные зависимости
 RUN apk add --no-cache \
     postgresql-dev \
     build-base \
     git \
     curl
 
+# PHP-расширения
 RUN docker-php-ext-install pdo_pgsql
 
-WORKDIR /var/www/
+# Composer для runtime (чтобы можно было запускать `composer install`)
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+WORKDIR /var/www/html
+
+# Только vendor из build-стадии (на случай, если на хосте его нет)
 COPY --from=build /app/vendor ./vendor
 
-RUN chmod -R 775 storage bootstrap/cache vendor && \
+# Права (убедитесь, что папки существуют — иначе chown упадёт)
+RUN mkdir -p storage bootstrap/cache && \
+    chmod -R 775 storage bootstrap/cache vendor && \
     chown -R www-data:www-data storage bootstrap/cache vendor
 
 CMD ["php-fpm"]

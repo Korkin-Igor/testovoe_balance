@@ -11,7 +11,7 @@ services:
       - db
     restart: unless-stopped
     volumes:
-      - ../project:/var/www
+      - ../project:/var/www/html
     networks:
       - app-network
 
@@ -23,7 +23,7 @@ services:
       - "8000:8000"
     volumes:
       - ./nginx/default.conf:/etc/nginx/nginx.conf
-      - ../project:/var/www
+      - ../project:/var/www/html
     depends_on:
       - app
       - db
