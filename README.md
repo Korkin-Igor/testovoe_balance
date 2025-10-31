@@ -10,7 +10,7 @@ cd deploy
 docker compose up -d --build # собираем проект
 docker compose exec app composer install # устанавливаем composer
 docker compose exec app php artisan key:generate # генерируем ключ для приложения
-docker compose exec app php artisan migrate --seed # заполняем БД тестовыми данными
+docker compose exec app php artisan migrate --seed # накатываем миграции + заполняем БД тестовыми данными
 ```
 Проект доступен по ссылке <a href="http://localhost:8000">localhost:8000/api</a> <br>
 Интерфейс для взаимодействия с БД доступен по ссылке <a href="http://localhost:8080">localhost:8080</a>
